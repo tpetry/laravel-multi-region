@@ -1,0 +1,83 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "tpetry/laravel-multi-region",
+    "description": "Middleware to create multi-region applications with read-after-write consistency",
+    "keywords": [
+        "laravel",
+        "multi region",
+        "read after write",
+        "read-after-write"
+    ],
+    "homepage": "https://github.com/tpetry/laravel-multi-region",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tpetry",
+            "email": "github@tpetry.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.9",
+        "laravel/pint": "^1.29",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^5.0",
+        "pestphp/pest-plugin-laravel": "^5.0",
+        "pestphp/pest-plugin-phpstan": "^5.2",
+        "pestphp/pest-plugin-type-coverage": "^5.0",
+        "phpstan/extension-installer": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tpetry\\MultiRegion\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tpetry\\MultiRegion\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "lint": [
+            "vendor/bin/pint --parallel"
+        ],
+        "lint:check": [
+            "vendor/bin/pint --parallel --test"
+        ],
+        "analyse": [
+            "vendor/bin/phpstan analyse"
+        ],
+        "test:types": [
+            "vendor/bin/pest --type-coverage --min=100"
+        ],
+        "test:unit": [
+            "vendor/bin/pest --parallel"
+        ],
+        "test": [
+            "@analyse",
+            "@lint:check",
+            "@test:types",
+            "@test:unit"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tpetry\\MultiRegion\\MultiRegionServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
