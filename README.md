@@ -20,14 +20,6 @@ You can install the package via Composer:
 composer require tpetry/laravel-multi-region
 ```
 
-You may publish all of the package's resources at once:
-
-```bash
-php artisan vendor:publish --tag="laravel-multi-region"
-```
-
-Or, you may publish each resource individually:
-
 ### Publishing the Configuration File
 
 ```bash
